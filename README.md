@@ -1,4 +1,4 @@
-Лабораторная №6 Белан Е. В. гр 334701 Вариант №1 Проверка работы программы проходит через URL ссылку: http://localhost:8080/distance?city1=<город1>&city2=<город2> Где <город1> и <город2> — названия городов, между которыми вы хотите рассчитать расстояние. Пример http://localhost:8080/distance?city1=Minsk&city2=Moscov
+Лабораторная №7 Белан Е. В. гр 334701 Вариант №1 Проверка работы программы проходит через URL ссылку: http://localhost:8080/distance?city1=<город1>&city2=<город2> Где <город1> и <город2> — названия городов, между которыми вы хотите рассчитать расстояние. Пример http://localhost:8080/distance?city1=Minsk&city2=Moscov
 ![image](https://github.com/user-attachments/assets/23b0f86b-2215-4566-99fa-8aaa9c6bb802)
 ![image](https://github.com/user-attachments/assets/92766edc-db20-4ec4-980d-d498d4212ea4)
 ![image](https://github.com/user-attachments/assets/4c4d50a0-0dd7-451e-b74e-2040c66a9f76)

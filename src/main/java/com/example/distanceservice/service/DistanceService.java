@@ -5,7 +5,7 @@ import com.example.distanceservice.entity.City;
 import com.example.distanceservice.entity.CityPair;
 import com.example.distanceservice.exception.CityNotFoundException;
 import com.example.distanceservice.repository.CityRepository;
-import com.example.distanceservice.util.RequestCounter;
+import com.example.distanceservice.service.RequestCounter; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

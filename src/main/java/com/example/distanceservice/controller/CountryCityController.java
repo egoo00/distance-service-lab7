@@ -1,30 +1,39 @@
 package com.example.distanceservice.controller;
 
-import com.example.distanceservice.entity.City;
-import com.example.distanceservice.service.CountryCityService;
+import com.example.distanceservice.dto.DistanceResponse;
+import com.example.distanceservice.service.DistanceService;
+import com.example.distanceservice.util.RequestCounter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
 @RestController
-public class CountryCityController {
-    private final CountryCityService countryCityService;
+@RequestMapping("/api")
+public class DistanceController {
+
+    private final DistanceService distanceService;
+    private final RequestCounter requestCounter;
 
     @Autowired
-    public CountryCityController(CountryCityService countryCityService) {
-        this.countryCityService = countryCityService;
+    public DistanceController(DistanceService distanceService, RequestCounter requestCounter) {
+        this.distanceService = distanceService;
+        this.requestCounter = requestCounter;
     }
 
-    @GetMapping("/api/cities-by-country")
-    public List<City> getCitiesByCountry(@RequestParam String countryName) {
-        return countryCityService.getCitiesByCountry(countryName);
+    @GetMapping("/distance")
+    public DistanceResponse getDistance(@RequestParam String from, @RequestParam String to) {
+        return distanceService.calculateDistance(from, to);
     }
 
-    @GetMapping("/api/cities-by-country-native")
-    public List<City> getCitiesByCountryNative(@RequestParam String countryName) {
-        return countryCityService.getCitiesByCountryNative(countryName);
+    @PostMapping("/distances/bulk")
+    public List<DistanceResponse> getBulkDistances(@RequestBody List<String[]> cityPairs) {
+        return distanceService.calculateBulkDistances(cityPairs);
+    }
+
+    @GetMapping("/counter")
+    public int getRequestCount() {
+        return requestCounter.getCount();
     }
 }

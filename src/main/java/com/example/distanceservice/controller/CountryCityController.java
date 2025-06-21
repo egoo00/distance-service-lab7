@@ -1,39 +1,52 @@
 package com.example.distanceservice.controller;
 
-import com.example.distanceservice.dto.DistanceResponse;
-import com.example.distanceservice.service.DistanceService;
+import com.example.distanceservice.entity.City;
+import com.example.distanceservice.service.CountryCityService;
 import com.example.distanceservice.util.RequestCounter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class DistanceController {
+public class CountryCityController {
+    private static final String API_PATH_CITIES_BY_COUNTRY = "/api/cities-by-country";
+    private static final String API_PATH_CITIES_BY_COUNTRY_NATIVE = "/api/cities-by-country-native";
 
-    private final DistanceService distanceService;
+    private final CountryCityService countryCityService;
     private final RequestCounter requestCounter;
 
     @Autowired
-    public DistanceController(DistanceService distanceService, RequestCounter requestCounter) {
-        this.distanceService = distanceService;
+    public CountryCityController(CountryCityService countryCityService, RequestCounter requestCounter) {
+        this.countryCityService = countryCityService;
         this.requestCounter = requestCounter;
     }
 
-    @GetMapping("/distance")
-    public DistanceResponse getDistance(@RequestParam String from, @RequestParam String to) {
-        return distanceService.calculateDistance(from, to);
+    @GetMapping(API_PATH_CITIES_BY_COUNTRY)
+    public List<City> getCitiesByCountry(@RequestParam String countryName) {
+        requestCounter.incrementTotal();
+        try {
+            List<City> cities = countryCityService.getCitiesByCountry(countryName);
+            requestCounter.incrementSuccessful();
+            return cities;
+        } catch (Exception e) {
+            requestCounter.incrementFailed();
+            throw e;
+        }
     }
 
-    @PostMapping("/distances/bulk")
-    public List<DistanceResponse> getBulkDistances(@RequestBody List<String[]> cityPairs) {
-        return distanceService.calculateBulkDistances(cityPairs);
-    }
-
-    @GetMapping("/counter")
-    public int getRequestCount() {
-        return requestCounter.getCount();
+    @GetMapping(API_PATH_CITIES_BY_COUNTRY_NATIVE)
+    public List<City> getCitiesByCountryNative(@RequestParam String countryName) {
+        requestCounter.incrementTotal();
+        try {
+            List<City> cities = countryCityService.getCitiesByCountryNative(countryName);
+            requestCounter.incrementSuccessful();
+            return cities;
+        } catch (Exception e) {
+            requestCounter.incrementFailed();
+            throw e;
+        }
     }
 }

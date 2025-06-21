@@ -10,3 +10,6 @@
 ![Снимок экрана 2025-05-26 203832](https://github.com/user-attachments/assets/09efcf66-e4f7-4ee8-bee7-d1aa657ec75a)
 ![image](https://github.com/user-attachments/assets/f86c47e3-fdaf-4816-a45e-415300fcc2af)
 ![image](https://github.com/user-attachments/assets/62fc5276-507e-4e9c-baa3-966418089b9c
+
+
+

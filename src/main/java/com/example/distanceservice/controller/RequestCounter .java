@@ -38,4 +38,6 @@ public class RequestCounter {
         successfulRequests.set(0);
         failedRequests.set(0);
     }
+
+    
 }

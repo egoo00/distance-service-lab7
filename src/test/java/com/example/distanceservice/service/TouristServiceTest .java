@@ -32,6 +32,7 @@ public class TouristServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    
     @Test
     void testGetAllTourists_Cached_ReturnsCached() {
         Tourist tourist = new Tourist();

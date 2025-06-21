@@ -61,6 +61,7 @@ public class CountryServiceTest {
         assertEquals(countries, result);
         verify(simpleCache).put(CountryService.CACHE_KEY_ALL_COUNTRIES, countries);
     }
+    
 
     @Test
     void testGetCountryById_Cached_ReturnsCached() {

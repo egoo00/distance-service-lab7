@@ -23,6 +23,7 @@ public class DataLoaderTest {
     @Mock
     private CountryRepository countryRepository;
 
+    
     @InjectMocks
     private DataLoader dataLoader;
 

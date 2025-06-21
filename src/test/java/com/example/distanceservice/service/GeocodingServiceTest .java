@@ -36,6 +36,7 @@ public class GeocodingServiceTest {
         assertEquals(cachedCity, result);
     }
 
+    
     @Test
     void testGetCity_Minsk_NotCached_ReturnsNewCity() {
         when(simpleCache.get(GeocodingService.CACHE_KEY_GEOCODE + CITY_MINSK.toLowerCase())).thenReturn(null);

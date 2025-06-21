@@ -9,9 +9,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-
-
-
 import java.util.Collections;
 import java.util.Optional;
 
@@ -24,6 +21,7 @@ public class TouristControllerTest {
     @Mock
     private TouristService touristService;
 
+    
     @InjectMocks
     private TouristController touristController;
 

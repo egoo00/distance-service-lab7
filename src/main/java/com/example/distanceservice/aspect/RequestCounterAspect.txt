@@ -17,7 +17,6 @@ public class RequestCounterAspect {
     public void incrementTotal() {
         totalRequests++;
     }
-
     @AfterReturning("execution(* com.example.distanceservice.controller.*.*(..))")
     public void incrementSuccessful() {
         successfulRequests++;

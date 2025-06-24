@@ -1,11 +1,13 @@
 package com.example.distanceservice.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class RequestCounterTest {
+
+    private static final int INITIAL_COUNT = 0;
+    private static final int INCREMENT_VALUE = 1;
 
     private RequestCounter requestCounter;
 
@@ -17,25 +19,25 @@ public class RequestCounterTest {
     @Test
     void testIncrementTotal_IncreasesTotalCount() {
         requestCounter.incrementTotal();
-        assertEquals(1, requestCounter.getTotalRequests());
+        assertEquals(INITIAL_COUNT + INCREMENT_VALUE, requestCounter.getTotalRequests());
         requestCounter.incrementTotal();
-        assertEquals(2, requestCounter.getTotalRequests());
+        assertEquals(INITIAL_COUNT + 2 * INCREMENT_VALUE, requestCounter.getTotalRequests());
     }
 
     @Test
     void testIncrementSuccessful_IncreasesSuccessfulCount() {
         requestCounter.incrementSuccessful();
-        assertEquals(1, requestCounter.getSuccessfulRequests());
+        assertEquals(INITIAL_COUNT + INCREMENT_VALUE, requestCounter.getSuccessfulRequests());
         requestCounter.incrementSuccessful();
-        assertEquals(2, requestCounter.getSuccessfulRequests());
+        assertEquals(INITIAL_COUNT + 2 * INCREMENT_VALUE, requestCounter.getSuccessfulRequests());
     }
 
     @Test
     void testIncrementFailed_IncreasesFailedCount() {
         requestCounter.incrementFailed();
-        assertEquals(1, requestCounter.getFailedRequests());
+        assertEquals(INITIAL_COUNT + INCREMENT_VALUE, requestCounter.getFailedRequests());
         requestCounter.incrementFailed();
-        assertEquals(2, requestCounter.getFailedRequests());
+        assertEquals(INITIAL_COUNT + 2 * INCREMENT_VALUE, requestCounter.getFailedRequests());
     }
 
     @Test
@@ -44,8 +46,8 @@ public class RequestCounterTest {
         requestCounter.incrementSuccessful();
         requestCounter.incrementFailed();
         requestCounter.reset();
-        assertEquals(0, requestCounter.getTotalRequests());
-        assertEquals(0, requestCounter.getSuccessfulRequests());
-        assertEquals(0, requestCounter.getFailedRequests());
+        assertEquals(INITIAL_COUNT, requestCounter.getTotalRequests());
+        assertEquals(INITIAL_COUNT, requestCounter.getSuccessfulRequests());
+        assertEquals(INITIAL_COUNT, requestCounter.getFailedRequests());
     }
 }
